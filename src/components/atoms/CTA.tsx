@@ -2,7 +2,6 @@ import Link from 'next/link'
 import AnimateUp from '~/components/common/BaseAnimation';
 import { CallToAction } from '~/shared/types'
 
-
 const CTA = (props: { data: CallToAction }) => {
 
     const { text, href, icon: Icon, targetBlank, btnText, btnType } = props.data;

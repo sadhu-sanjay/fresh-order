@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import AnimateUp from '~/common/BaseAnimation';
-import { CallToAction } from '~/components/shared/types'
+import AnimateUp from '~/components/common/BaseAnimation';
+import { CallToAction } from '~/shared/types'
 
 
 const CTA = (props: { data: CallToAction }) => {

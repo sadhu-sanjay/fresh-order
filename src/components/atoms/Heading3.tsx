@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import AnimateUp from '~/common/BaseAnimation'
+import AnimateUp from '~/components/common/BaseAnimation'
 import { TailWindTextAlign, TailWindTextSizes, TextProps } from '~/components/shared/types'
 
 export const Heading3 = ({ text, textAlign = 'text-left' }: { text?: string, textAlign?: TailWindTextAlign }) => {

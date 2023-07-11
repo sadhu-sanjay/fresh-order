@@ -1,8 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { MobileNav } from './MobileNav'
-import { ThemeController } from '~/controller/ThemeController'
+import { MobileNav } from '../components/sections/MobileNav'
+import { Nav } from '~/components/sections/Nav'
+import { ThemeController } from '~/components/controller/ThemeController'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,13 +17,33 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  const appContainerStyle = {
+
+    backgroundColor: 'white',
+    maxWidth: '80vw',
+    borderRadius: '10px',
+    width: '100%',
+    margin: '0 auto',
+    height: '100%',
+    padding: '10px',
+    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)'
+
+  }
+
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeController >
-          <MobileNav />
-          {children}
-        </ThemeController>
+    <html lang="en" >
+      <body className={inter.className} >
+        <div
+          className='px-2.5 md:px-20 w-full bg-gradient-to-r from-slate-200
+       to-slate-300 dark:bg-gradient-to-l dark:from-slate-800 
+        dark:to-slate-900 flex flex-col items-center justify-start' >
+          <ThemeController >
+            <MobileNav />
+            <Nav />
+            {children}
+          </ThemeController>
+        </div>
       </body>
     </html>
   )

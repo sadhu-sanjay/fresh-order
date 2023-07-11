@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image, { ImageProps } from 'next/image'
-import AnimateUp from '~/common/BaseAnimation'
+import AnimateUp from '~/components/common/BaseAnimation'
 
 export const ImageContainer = (imgProps: ImageProps) => {
 

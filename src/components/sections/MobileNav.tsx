@@ -6,9 +6,9 @@ import logo from '~/assets/images/front.webp'
 import { motion } from 'framer-motion';
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { headerData } from '~/data/data'
-import ToggleDarkMode from '~/atoms/ToggleDarkMode';
+import ToggleDarkMode from '~/components/atoms/ToggleDarkMode';
 import CTA from '../atoms/CTA';
-import { CallToAction } from '../shared/types';
+import { CallToAction } from '../../shared/types';
 import { Heading3 } from '../atoms/Heading3';
 
 

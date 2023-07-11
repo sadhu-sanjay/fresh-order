@@ -16,7 +16,6 @@ module.exports = {
         textHeadingDark: colors.gray[200],
         textSecondary: '#888888',
         textSecondaryDark: colors.gray[400],
-
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

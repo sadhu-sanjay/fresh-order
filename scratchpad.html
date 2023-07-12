@@ -1,0 +1,37 @@
+<!-- HTML -->
+<div id="tshirt-div">
+    <!-- This is where the t-shirt design will be displayed -->
+  </div>
+  
+  <!-- Include Fabric.js and DomToImage in the page -->
+  <script src="./fabric.min.js"></script>
+  <script src="./domtoimage.min.js"></script>
+  
+  <!-- JavaScript -->
+  <script>
+    // Create a new Fabric.js canvas
+    var canvas = new fabric.Canvas('tshirt-div');
+  
+    // Add a simple rectangle (you could add any shape or image)
+    var rect = new fabric.Rect({
+      left: 100,
+      top: 100,
+      fill: 'red',
+      width: 60,
+      height: 70
+    });
+  
+    // Add the rectangle to the canvas
+    canvas.add(rect);
+  
+    // Export the design as a PNG image
+    var node = document.getElementById('tshirt-div');
+    domtoimage.toPng(node).then(function (dataUrl) {
+      var img = new Image();
+      img.src = dataUrl;
+      document.body.appendChild(img);
+    }).catch(function (error) {
+      console.error('oops, something went wrong!', error);
+    });
+  </script>
+  

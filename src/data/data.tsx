@@ -122,16 +122,16 @@ export const twoColumnImageTextData: FeatureProps = {
     actionSection: {
         twoText: {
             title: {
-                text: 'Double Click to Update Anything',
+                text: 'The Leader in Quality Custom T-Shirts'
             },
             subtitle: {
-                text: 'Double click the image placeholders to add images. Do the same for any text, then tweak styles and publish.',
+                text: 'For events, businesses, schools, groups, and nonprofits',
             },
         },
         actions: [
             {
-                text: 'Download ',
-                href: 'https://github.com/onwidget/tailnext',
+                text: 'Start Designing',
+                href: '/design',
                 targetBlank: true,
                 btnType: 'primary',
             },
@@ -155,12 +155,13 @@ export const featuresLargeData: FeatureProps = {
     actionSection: {
         twoText: {
             title: {
-                text: 'Fast',
+                text: 'The Leader in Quality Custom T-Shirts',
                 fontSize: 'text-5xl',
                 alignment: 'text-left',
             },
             subtitle: {
-                text: 'You have never made website this fast before',
+                // text: 'You have never made website this fast before',
+                text: 'For events, businesses, schools, groups, and nonprofits'
             },
         },
         actions: [
@@ -184,7 +185,7 @@ export const featuresLargeData: FeatureProps = {
 export const headerData: HeaderProps = {
     links: [
         {
-            label: 'Pages',
+            label: 'Products',
             icon: IconChevronDown,
             links: [
                 {
@@ -214,15 +215,24 @@ export const headerData: HeaderProps = {
             ]
         },
         {
-            label: 'Assets',
-            href: '/assets',
+            label: 'Services',
+            href: '/services',
+            icon: IconChevronDown,
+        },
+        {
+            label: 'Templates',
+            href: '/templates',
+            icon: IconChevronDown,
+        },
+        {
+            label: 'Help',
+            href: '/help',
             icon: IconChevronDown,
         },
         {
             label: 'About',
             href: '/about',
             icon: IconHome2,
-
         },
 
     ],

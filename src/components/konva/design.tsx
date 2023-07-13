@@ -1,12 +1,13 @@
 'use client'
 
-import { Stage, Layer, Rect, Circle } from 'react-konva';
+import { Stage, Layer, Rect, Circle, Image as KImage } from 'react-konva';
 import { IconChevronRight, IconArrowLeftCircle } from '@tabler/icons-react';
 import { Heading3 } from '../atoms/Heading3';
 import Link from 'next/link';
 import Image from 'next/image';
 import stagebg from '~/assets/images/backdrop1.jpg'
 import tshirt from '~/assets/images/tshirt/white/front.png'
+import useImage from 'use-image';
 
 const sGrid = {
   display: 'grid',
@@ -42,10 +43,9 @@ export default function Design() {
           <div className='bg-white flex dark:bg-black w-full h-full'>
             <div className='flex gap-2 flex-row justify-start items-center p-4'>
               <Link href='/' className='shadow-sm rounded-lg p-1 m-1 '>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"  className="w-6 h-6">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" className="w-6 h-6">
                   <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z" clipRule="evenodd" />
                 </svg>
-
 
               </Link>
               <Link href='/'>
@@ -77,17 +77,32 @@ export default function Design() {
 
 
 const StageContainer = () => {
+
+  const handleDragStart = (e: any) => {
+    const id = e.target.id();
+    console.log("Here", id)
+  };
+  // the first very simple and recommended way:
+  const LionImage = () => {
+    const [image] = useImage('https://konvajs.org/assets/lion.png');
+    return <KImage draggable image={image} />;
+  };
+
   return (
-    <div className=' w-full h-full'>
-      <div className={`bg-gradient-to-r from-sky-950 to-sky-900 stageBackground bg-contain bg-no-repeat bg-center w-full h-full `}>
-        <Image objectFit='cover' objectPosition='center' alt='tshirt image on stage' src={tshirt.src} fill />
-        <Stage width={window.innerWidth * 0.7} height={window.innerHeight * 0.8}>
+
+    <div className={`bg-gradient-to-r from-sky-950 to-sky-900 stageBackground bg-contain bg-no-repeat bg-center w-full h-full `}>
+      {/* <div className='bg-yellow-500 w-fill h-[200px]' > </div> */}
+      <Image objectFit='cover' objectPosition='center' alt='tshirt image on stage' src={tshirt.src} fill />
+      <div className='flex w-full h-full bg-blue-800'>
+        <Stage multiply={true} width={200} height={200} className='bg-black absolute top-[20%] left-[22%] md:left-[39%] '>
           <Layer>
             {/* <Rect width={500} height={500} fill="red" /> */}
-            <Circle x={500} y={500} stroke="black" radius={50} />
+            <LionImage />
+            {/* <Circle draggable onDragStart={handleDragStart} x={0} y={0} stroke="black" radius={50} /> */}
           </Layer>
         </Stage>
       </div>
     </div>
+
   )
 }

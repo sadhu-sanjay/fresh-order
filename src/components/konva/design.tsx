@@ -1,7 +1,7 @@
 'use client'
 
 import { Stage, Layer, Rect, Circle } from 'react-konva';
-import { IconChevronRight, IconArrowBack } from '@tabler/icons-react';
+import { IconChevronRight, IconArrowLeftCircle } from '@tabler/icons-react';
 import { Heading3 } from '../atoms/Heading3';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -41,8 +41,12 @@ export default function Design() {
         <div style={sItem1} >
           <div className='bg-white flex dark:bg-black w-full h-full'>
             <div className='flex gap-2 flex-row justify-start items-center p-4'>
-              <Link href='/'>
-                <IconArrowBack color='gray' className='w-6 ' />
+              <Link href='/' className='shadow-sm rounded-lg p-1 m-1 '>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"  className="w-6 h-6">
+                  <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z" clipRule="evenodd" />
+                </svg>
+
+
               </Link>
               <Link href='/'>
                 <Heading3 animate={false} text='Step1' />

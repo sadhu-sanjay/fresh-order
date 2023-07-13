@@ -7,6 +7,5 @@ const Design = dynamic(() => import('~/components/konva/design'),{
 
 
 export default function Page(props: any) {
-
     return <Design />;
 }

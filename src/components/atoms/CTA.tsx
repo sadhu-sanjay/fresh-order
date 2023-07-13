@@ -2,6 +2,7 @@ import Link from 'next/link'
 import AnimateUp from '~/components/common/BaseAnimation';
 import { CallToAction } from '~/shared/types'
 
+
 const CTA = (props: { data: CallToAction }) => {
 
     const { text, href, icon: Icon, targetBlank, btnText, btnType } = props.data;
@@ -15,7 +16,7 @@ const CTA = (props: { data: CallToAction }) => {
                 <div className='flex w-full sm:w-auto' >
                     {targetBlank ? (
                         <Link
-                            className={`btn ${btnType === 'primary' ? 'btn-primary' : ''} w-full 
+                            className={`btn ${btnType === 'primary' ? 'btn-primary' : ''} w-full sm:mb-0
                              ${classLocal ? classLocal : ''} 
                             ${btnText === 'uppercase' ? 'uppercase' : ''}`}
                             href={href}
@@ -36,7 +37,13 @@ const CTA = (props: { data: CallToAction }) => {
                                 } ${btnText === 'uppercase' ? 'uppercase' : ''}`}
                             href={href}
                         >
-                            {Icon && <Icon className="mr-1 -ml-1.5 h-5 w-5" />} {text}
+                            {Icon && <Icon className="mr-1 -ml-1.5 h-5 w-5" />}
+                            <div
+                                className='flex-0 w-auto h-auto whitespace-pre relative
+                            font-semibold text-sm font-sans text-center leading-5'
+                            >
+                                {text}
+                            </div>
                         </Link>
                     )}
                 </div>

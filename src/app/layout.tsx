@@ -35,7 +35,7 @@ export default function RootLayout({
     <html lang="en" >
       <body className={inter.className} >
         <div
-          className='px-2.5 md:px-20 w-full bg-gradient-to-r from-slate-200
+          className='px-2.5 md:px-20 min-h-screen w-full bg-gradient-to-r from-slate-200
        to-slate-300 dark:bg-gradient-to-l dark:from-slate-800 
         dark:to-slate-900 flex flex-col items-center justify-start' >
           <ThemeController >

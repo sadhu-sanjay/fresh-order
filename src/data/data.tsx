@@ -132,7 +132,7 @@ export const twoColumnImageTextData: FeatureProps = {
             {
                 text: 'Start Designing',
                 href: '/design',
-                targetBlank: true,
+                targetBlank: false,
                 btnType: 'primary',
             },
             {

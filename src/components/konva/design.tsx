@@ -8,6 +8,7 @@ import Image from 'next/image';
 import stagebg from '~/assets/images/backdrop1.jpg'
 import tshirt from '~/assets/images/tshirt/white/front.png'
 import useImage from 'use-image';
+import { useEffect, useRef, useState } from 'react';
 
 const sGrid = {
   display: 'grid',
@@ -78,6 +79,8 @@ export default function Design() {
 
 const StageContainer = () => {
 
+  const ref = useRef(null)
+
   const handleDragStart = (e: any) => {
     const id = e.target.id();
     console.log("Here", id)
@@ -88,13 +91,25 @@ const StageContainer = () => {
     return <KImage draggable image={image} />;
   };
 
+  const [size, setSize] = useState({ width: 0, height: 0 })
+
+
+  useEffect(() => {
+    if (ref.current) {
+      setSize({ width: ref.current.offsetHeight * 0.36, height: ref.current.offsetHeight * 0.35})
+    }
+    console.log(size)
+  }
+    , [])
+
+
   return (
 
-    <div className={`bg-gradient-to-r from-sky-950 to-sky-900 stageBackground bg-contain bg-no-repeat bg-center w-full h-full `}>
+    <div ref={ref}  className={`bg-gradient-to-r from-sky-950 to-sky-900 stageBackground bg-contain bg-no-repeat bg-center w-full h-full `}>
       {/* <div className='bg-yellow-500 w-fill h-[200px]' > </div> */}
       <Image objectFit='cover' objectPosition='center' alt='tshirt image on stage' src={tshirt.src} fill />
       <div className='flex w-full h-full bg-blue-800'>
-        <Stage multiply={true} width={200} height={200} className='bg-black absolute top-[20%] left-[22%] md:left-[39%] '>
+        <Stage multiply={true} width={size.width} height={size.height} className='bg-black absolute top-[20%] left-[22%] md:left-[37%] '>
           <Layer>
             {/* <Rect width={500} height={500} fill="red" /> */}
             <LionImage />

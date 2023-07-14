@@ -24,7 +24,7 @@ const AnimateUp = (
                 transition={{
                     type: 'spring',
                     stiffness: 100,
-                    delay: delay, // 0.2
+                    delay: 0, // 0.2
                     mass: 2,
                     damping: 30
                 }}

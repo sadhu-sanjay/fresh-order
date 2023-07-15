@@ -13,11 +13,13 @@ import useImage from 'use-image';
 import { useEffect, useRef, useState } from 'react';
 import AnimateUp from '../common/BaseAnimation';
 import ToggleDarkMode from '../atoms/ToggleDarkMode';
+import { designData } from '~/data/data';
+import { DesignOption } from '~/shared/types';
 
 const sGrid = {
   display: 'grid',
-  gridTemplateColumns: 'repeat(20, 1fr)',
-  gridTemplateRows: 'repeat(20, 1fr)',
+  gridTemplateColumns: 'repeat(13, 1fr)',
+  gridTemplateRows: 'repeat(9, 1fr)',
   width: '100%',
   height: '100%',
 }
@@ -38,15 +40,22 @@ const sItem3 = {
 
 export default function Design() {
 
-  const items = [1, 2, 3, 4].map((item, index) => {
+  const items = designData.options.map((each: DesignOption) => {
+
+    const { icon: Icon, name } = each
+
     return (
-      <div className='hover:bg-blue-600 hover:shadow-md hover:shadow-blue-900/50 hover:text-[white]
-      text-[#424447] 
+      <div className={`hover:bg-blue-600 hover:shadow-md hover:shadow-blue-900/50 hover:text-[white]
+      text-[#424447] border-dotted border border-bed-200
       transition-all duration-200 ease-in-out cursor-pointer 
-      rounded-lg aspect-square flex flex-col justify-center items-center'>
+      rounded-lg aspect-square h-full
+      flex flex-col justify-center items-center`}>
         <label htmlFor='uploadImg' className='cursor-pointer flex flex-col items-center'>
-          <PhotoIcon className='w-8 ' />
-          Image
+          {Icon && <Icon className='w-5' />}
+          <div className='text-xs' >
+            {name}
+          </div>
+       
           <input id='uploadImg' type='file' hidden />
         </label>
       </div>
@@ -60,8 +69,8 @@ export default function Design() {
     <>
 
       <div style={sGrid} className='absolute left-0 right-0 '>
-        <div style={sItem1} className='col-[1/21] row-[1/2] '>
-          <div className='bg-white flex dark:bg-black w-full h-20'>
+        <div className='col-[1/14] row-[1/2]'>
+          <div className='bg-white w-full h-full flex flex-row'>
             <div className='flex gap-2 flex-row justify-start items-center p-4'>
               <Link href='/' className=' p-2 '>
                 <ArrowLeftCircleIcon color='gray' className='h-7' />
@@ -83,19 +92,16 @@ export default function Design() {
           </div>
         </div>
 
-        <div className='relative bg-yellow-500 col-[1/21] row-[2/20] lg:col-[2/21] lg:row-[2/21] '>
+        <div className='relative bg-yellow-500 col-[1/21] row-[2/20] lg:col-[2/14] lg:row-[2/10] '>
           <StageContainer />
         </div>
 
-        <aside className='bg-white col-[1/21] row-[20/21] lg:col-[1/2] lg:row-[2/11] '>
+        <aside className='bg-white col-[1/21] row-[20/21] lg:col-[1/2] lg:row-[2/10] '>
           <div className='grid grid-cols-4 lg:grid-cols-1
           gap-3 md:gap-5 
-          p-3 md:p-5 
+          p-3 md:p-1
           w-full h-auto'>
             {items}
-            {/* <div>
-              <IconTypography className='w-8' />
-            </div> */}
           </div>
         </aside>
 
@@ -148,7 +154,7 @@ const StageContainer = () => {
     <div ref={ref} className={`bg-gradient-to-r from-sky-950 to-sky-900 stageBackground bg-contain bg-no-repeat bg-center w-full h-full `}>
       <Image objectFit='cover' objectPosition='center' alt='tshirt image on stage' src={tshirt.src} fill />
       <div className='flex w-full h-full bg-blue-800'>
-        <Stage multiply={true} width={size.width} height={size.height} className='bg absolute top-[20%] left-[22%] md:left-[37%] '>
+        <Stage multiply={true} width={size.width} height={size.height} className='border-dotted border border-secondary-700 absolute top-[20%] left-[22%] md:left-[37%] '>
           <Layer>
             {/* <Rect onTap={() => setIsSelected(true)} onClick={() => setIsSelected(true)} ref={shapeRef} draggable width={100} height={100} fill="red" /> */}
 

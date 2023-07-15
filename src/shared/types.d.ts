@@ -59,6 +59,15 @@ interface MenuLink extends Link {
     links?: Array<Link>
 }
 
+interface DesignDashboard {
+    heading: string
+    options: Array<DesignOption>
+}
+interface DesignOption {
+    name: string
+    icon?: Function
+}
+
 interface CallToAction {
     text: string;
     href?: string;

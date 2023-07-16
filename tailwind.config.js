@@ -10,7 +10,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-
         primary: colors.blue,
         secondary: colors.orange,
         textHeading: colors.slate[950],

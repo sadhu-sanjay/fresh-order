@@ -1,5 +1,5 @@
-import { IconHome2, IconChevronDown } from '@tabler/icons-react'
-import { CircleStackIcon } from '@heroicons/react/24/solid'
+import { IconHome2, IconChevronDown, IconFileTypography } from '@tabler/icons-react'
+import { CircleStackIcon, PhotoIcon } from '@heroicons/react/24/solid'
 
 import {
     DoubleTextProps,
@@ -22,7 +22,11 @@ export const designData: CreateDesign = {
     options: [
         {
             name: 'Add Image',
-            icon: CircleStackIcon
+            icon: PhotoIcon
+        },
+        {
+            name: 'Add Text',
+            icon: IconFileTypography
         },
         {
             name: 'Add Text',

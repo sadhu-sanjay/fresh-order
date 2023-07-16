@@ -4,6 +4,7 @@ import { Play } from 'next/font/google'
 import { MobileNav } from '../components/sections/MobileNav'
 import { Nav } from '~/components/sections/Nav'
 import { ThemeController } from '~/components/controller/ThemeController'
+import { ThemeProvider } from 'next-themes'
 
 const inter = Play({ subsets: ['latin'], weight: '700' })
 
@@ -32,18 +33,19 @@ export default function RootLayout({
   }
 
   return (
+
     <html lang="en" >
       <body className={inter.className} >
-        <div
-          className='px-2.5 md:px-20 min-h-screen w-full bg-gradient-to-r from-slate-200
-       to-slate-300 dark:bg-gradient-to-l dark:from-slate-800 
-        dark:to-slate-900 flex flex-col items-center justify-start' >
-          <ThemeController >
+        <ThemeController >
+          <div
+            className='px-2.5 md:px-20 min-h-screen w-full bg-gradient-to-r from-slate-200
+          to-slate-300 dark:bg-gradient-to-l dark:from-slate-800 
+          dark:to-slate-900 flex flex-col items-center justify-start' >
             <MobileNav />
             <Nav />
             {children}
-          </ThemeController>
-        </div>
+          </div>
+        </ThemeController>
       </body>
     </html>
   )

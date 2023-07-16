@@ -1,14 +1,13 @@
 'use client';
-
 import { ThemeProvider } from 'next-themes';
 
 interface ProvidorProps {
     children: React.ReactNode;
 }
 
-const ThemeController = ({children}: ProvidorProps) => {
+const ThemeController = ({ children }: ProvidorProps) => {
     return (
-        <ThemeProvider disableTransitionOnChange attribute='class' defaultTheme='system'>
+        <ThemeProvider attribute="class" >
             {children}
         </ThemeProvider>
     )

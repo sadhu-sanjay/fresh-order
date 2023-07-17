@@ -122,7 +122,6 @@ export const featuresLargeData: FeatureProps = {
         width: '100%',
         height: '100%',
     },
-
 }
 
 export const headerData: HeaderProps = {

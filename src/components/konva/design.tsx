@@ -35,7 +35,6 @@ const sItem3 = {
 
 export default function Design() {
 
-  
   const [design, setDesign] = useState('https://konvajs.org/assets/lion.png')
 
   function onImageSelect(img: string) {
@@ -50,7 +49,7 @@ export default function Design() {
 
       <div className='bg-pink-900 col-[1/14] row-[2/9] lg:col-[2/14] lg:row-[2/10] '>
         {/* <App /> */}
-        <Viewer />
+        <Viewer design={design} />
       </div>
 
       <aside className='bg-blue-900 col-[1/14] row-[9/10] lg:col-[1/2] lg:row-[2/10] '>

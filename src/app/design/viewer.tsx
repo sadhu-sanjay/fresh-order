@@ -6,6 +6,9 @@ import tshirt from '~/assets/images/tshirt/white/front.png'
 import React from 'react';
 import { KonvaEventObject } from 'konva/lib/Node';
 import Rectangle from './shapes/Rectangle';
+import MyImage from './shapes/my-image';
+
+
 
 
 const initialRectangles = [
@@ -27,7 +30,7 @@ const initialRectangles = [
   },
 ];
 
-function Viewer() {
+function Viewer({design: string}: {design: string | null | undefined;}) {
   const [rectangles, setRectangles] = useState(initialRectangles);
   const [selectedId, selectShape] = useState<string | null>(null);
 
@@ -52,6 +55,7 @@ function Viewer() {
       <Layer>
         {rectangles.map((rect, i) => {
           return (
+            <>
             <Rectangle
               key={i}
               shapeProps={rect}
@@ -65,6 +69,20 @@ function Viewer() {
                 setRectangles(rects);
               }}
             />
+            <MyImage
+              key={i}
+              shapeProps={rect}
+              isSelected={rect.id === selectedId}
+              onSelect={() => {
+                selectShape(rect.id)
+              }}
+              onChange={(newAttrs: any) => {
+                const rects = rectangles.slice();
+                rects[i] = newAttrs;
+                setRectangles(rects);
+              }}
+            />
+           </> 
           )
         })}
       </Layer>

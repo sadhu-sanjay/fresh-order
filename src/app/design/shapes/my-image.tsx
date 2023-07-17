@@ -1,13 +1,17 @@
 import { Rect, Circle, Image as KImage, Transformer } from 'react-konva';
 import { useEffect, useRef, useState } from 'react'
 import { KonvaEventObject } from 'konva/lib/Node';
+import useImage from 'use-image';
+import waterPark from '~/assets/images/designs/water_park@0.5x.png'
 
-const Rectangle = ({ shapeProps, isSelected, onSelect, onChange }:
-    { shapeProps: any, isSelected: boolean, onSelect: any, onChange: any }) => {
+const MyImage = ({ shapeProps, isSelected, onSelect, onChange, design }:
+    { shapeProps: any, isSelected: boolean, onSelect: any, onChange: any, 
+    design: string }) => {
   
     const shapeRef = useRef(null)
     const trRef = useRef(null)
-
+    const [image, setImage] = useImage(waterPark.src)
+  
     useEffect(() => {
       if (isSelected && trRef && trRef.current) {
         // we need to attach transformer manually
@@ -18,7 +22,8 @@ const Rectangle = ({ shapeProps, isSelected, onSelect, onChange }:
   
     return (
       <>
-        <Rect
+        <KImage
+        image={image}
           onclick={onSelect}
           onTap={onSelect}
           ref={shapeRef}
@@ -69,4 +74,4 @@ const Rectangle = ({ shapeProps, isSelected, onSelect, onChange }:
     )
   }
 
-  export default Rectangle;
+  export default MyImage;

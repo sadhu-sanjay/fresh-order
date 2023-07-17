@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import useImage from 'use-image';
 import { useEffect, useRef, useState } from 'react'
-import { Stage, Layer, Rect, Circle, Image as KImage, Transformer } from 'react-konva';
+import { Stage, Layer, Rect, Circle, Image as KImage, Transformer, Group } from 'react-konva';
 import tshirt from '~/assets/images/tshirt/white/front.png'
 import React from 'react';
 import { KonvaEventObject } from 'konva/lib/Node';
@@ -30,7 +30,7 @@ const initialRectangles = [
   },
 ];
 
-function Viewer({design: string}: {design: string | null | undefined;}) {
+function Viewer() {
   const [rectangles, setRectangles] = useState(initialRectangles);
   const [selectedId, selectShape] = useState<string | null>(null);
 
@@ -55,7 +55,7 @@ function Viewer({design: string}: {design: string | null | undefined;}) {
       <Layer>
         {rectangles.map((rect, i) => {
           return (
-            <>
+            <Group key={i}>
             <Rectangle
               key={i}
               shapeProps={rect}
@@ -70,7 +70,8 @@ function Viewer({design: string}: {design: string | null | undefined;}) {
               }}
             />
             <MyImage
-              key={i}
+            // design={design}
+              key={i + 100}
               shapeProps={rect}
               isSelected={rect.id === selectedId}
               onSelect={() => {
@@ -82,7 +83,7 @@ function Viewer({design: string}: {design: string | null | undefined;}) {
                 setRectangles(rects);
               }}
             />
-           </> 
+           </Group> 
           )
         })}
       </Layer>

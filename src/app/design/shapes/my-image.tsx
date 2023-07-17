@@ -4,8 +4,9 @@ import { KonvaEventObject } from 'konva/lib/Node';
 import useImage from 'use-image';
 import waterPark from '~/assets/images/designs/water_park@0.5x.png'
 
-const MyImage = ({ shapeProps, isSelected, onSelect, onChange }:
-    { shapeProps: any, isSelected: boolean, onSelect: any, onChange: any }) => {
+const MyImage = ({ shapeProps, isSelected, onSelect, onChange, design }:
+    { shapeProps: any, isSelected: boolean, onSelect: any, onChange: any,
+    design: string }) => {
   
     const shapeRef = useRef(null)
     const trRef = useRef(null)

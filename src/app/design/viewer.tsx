@@ -30,7 +30,7 @@ const initialRectangles = [
   },
 ];
 
-function Viewer() {
+function Viewer({design}: {design: string}) {
   const [rectangles, setRectangles] = useState(initialRectangles);
   const [selectedId, selectShape] = useState<string | null>(null);
 
@@ -70,7 +70,7 @@ function Viewer() {
               }}
             />
             <MyImage
-            // design={design}
+            design={design}
               key={i + 100}
               shapeProps={rect}
               isSelected={rect.id === selectedId}

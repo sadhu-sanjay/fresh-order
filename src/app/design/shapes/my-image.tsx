@@ -1,5 +1,5 @@
 import { Rect, Circle, Image as KImage, Transformer } from 'react-konva';
-import { useEffect, useRef, useState } from 'react'
+import { use, useEffect, useRef, useState } from 'react'
 import { KonvaEventObject } from 'konva/lib/Node';
 import useImage from 'use-image';
 import waterPark from '~/assets/images/designs/water_park@0.5x.png'
@@ -11,6 +11,8 @@ const MyImage = ({ shapeProps, isSelected, onSelect, onChange, design }:
     const shapeRef = useRef(null)
     const trRef = useRef(null)
     const [image, setImage] = useImage(waterPark.src)
+    // let designImage = useImage(design)
+    var [designImage] = useImage(design)
   
     useEffect(() => {
       if (isSelected && trRef && trRef.current) {
@@ -18,12 +20,13 @@ const MyImage = ({ shapeProps, isSelected, onSelect, onChange, design }:
         trRef.current.nodes([shapeRef.current]);
         trRef.current.getLayer().batchDraw();
       }
+
     }, [isSelected])
   
     return (
       <>
         <KImage
-        image={image}
+        image={designImage}
           onclick={onSelect}
           onTap={onSelect}
           ref={shapeRef}

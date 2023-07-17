@@ -30,7 +30,7 @@ const initialRectangles = [
   },
 ];
 
-function Viewer({design}: {design: string}) {
+function Viewer({ design }: { design: string }) {
   const [rectangles, setRectangles] = useState(initialRectangles);
   const [selectedId, selectShape] = useState<string | null>(null);
 
@@ -55,8 +55,22 @@ function Viewer({design}: {design: string}) {
       <Layer>
         {rectangles.map((rect, i) => {
           return (
-            <Group key={i}>
-            <Rectangle
+            // <Group key={i}>
+            // <Rectangle
+            //   key={i}
+            //   shapeProps={rect}
+            //   isSelected={rect.id === selectedId}
+            //   onSelect={() => {
+            //     selectShape(rect.id)
+            //   }}
+            //   onChange={(newAttrs: any) => {
+            //     const rects = rectangles.slice();
+            //     rects[i] = newAttrs;
+            //     setRectangles(rects);
+            //   }}
+            // />
+            <MyImage
+              design={design}
               key={i}
               shapeProps={rect}
               isSelected={rect.id === selectedId}
@@ -69,21 +83,7 @@ function Viewer({design}: {design: string}) {
                 setRectangles(rects);
               }}
             />
-            <MyImage
-            design={design}
-              key={i + 100}
-              shapeProps={rect}
-              isSelected={rect.id === selectedId}
-              onSelect={() => {
-                selectShape(rect.id)
-              }}
-              onChange={(newAttrs: any) => {
-                const rects = rectangles.slice();
-                rects[i] = newAttrs;
-                setRectangles(rects);
-              }}
-            />
-           </Group> 
+            //  </Group> 
           )
         })}
       </Layer>

@@ -15,6 +15,7 @@ const MyImage = ({ shapeProps, isSelected, onSelect, onChange, design }:
     var [designImage] = useImage(design)
   
     useEffect(() => {
+
       if (isSelected && trRef && trRef.current) {
         // we need to attach transformer manually
         trRef.current.nodes([shapeRef.current]);

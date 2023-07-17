@@ -1,9 +1,6 @@
 import { designData } from "~/data/data"
 import { DesignOption } from "~/shared/types"
 
-
-
-
 export default function Editor({ onImageSelect }: { onImageSelect: (URL: string) => void }) {
 
     const handleFileChange = (e: any) => {

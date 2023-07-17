@@ -3,60 +3,75 @@ import useImage from 'use-image';
 import { useEffect, useRef, useState } from 'react'
 import { Stage, Layer, Rect, Circle, Image as KImage, Transformer } from 'react-konva';
 import tshirt from '~/assets/images/tshirt/white/front.png'
+import React from 'react';
+import { KonvaEventObject } from 'konva/lib/Node';
+import Rectangle from './shapes/Rectangle';
 
 
-export default function ({ design }: { design: string }) {
+const initialRectangles = [
+  {
+    x: 10,
+    y: 10,
+    width: 100,
+    height: 100,
+    fill: 'red',
+    id: 'rect1',
+  },
+  {
+    x: 150,
+    y: 150,
+    width: 100,
+    height: 100,
+    fill: 'green',
+    id: 'rect2',
+  },
+];
 
-  const ref = useRef(null)
-  const imgShapeRef = useRef(null)
-  const shapeRef = useRef(null)
-  const trRef = useRef(null)
+function Viewer() {
+  const [rectangles, setRectangles] = useState(initialRectangles);
+  const [selectedId, selectShape] = useState<string | null>(null);
 
-  const [size, setSize] = useState({ width: 0, height: 0 })
-  const [isSelected, setIsSelected] = useState(false)
-  const [selectedImage, setSelectedImage] = useImage('https://konvajs.org/assets/lion.png')
-
-  const handleDragStart = (e: any) => {
-    const id = e.target.id();
-    console.log("Here", id)
-  };
-
-  useEffect(() => {
-
-    if (ref.current) {
-      setSize({ width: ref.current.offsetHeight * 0.36, height: ref.current.offsetHeight * 0.35 })
+  const checkDeselect = (e: any) => {
+    // if (!eve.target.getStage()) {
+    //   selectShape(null);
+    // }
+    // deselect when clicked on empty area
+    const clickedOnEmpty = e.target === e.target.getStage();
+    if (clickedOnEmpty) {
+      selectShape(null);
     }
-
-    if (isSelected) {
-      trRef.current!.nodes([shapeRef.current]);
-      trRef.current!.getLayer().batchDraw();
-    }
-
-    console.log(size)
-  }, [isSelected, selectedImage])
-
-
-  const LionImage = () => {
-    const [image] = useImage('https://konvajs.org/assets/lion.png');
-    return <KImage ref={imgShapeRef} image={image} />;
-  };
-
-  const [designImage] = useImage(design)
-// return (<div></div>)
+  }
 
   return (
+    <Stage
+      width={window.innerWidth}
+      height={window.innerHeight}
+      onMouseDown={checkDeselect}
+      onTouchStart={checkDeselect}>
 
-    // Base Element
-    // <div ref={ref} className={`grid place-items-center  bg-gradient-to-r from-sky-950 to-sky-900 stageBackground  w-full h-full `}>
-
-      // <img className='object-center bg-no-repeat object-cover w-full h-auto sm:h-full sm:w-auto ' src={tshirt.src} alt='design' />
-      <div className='w-full h-full bg-gradient-to-r from-sky-950 to-sky-900'>
-
-      </div>
-
-
-
-    // </div>
-
+      <Layer>
+        {rectangles.map((rect, i) => {
+          return (
+            <Rectangle
+              key={i}
+              shapeProps={rect}
+              isSelected={rect.id === selectedId}
+              onSelect={() => {
+                selectShape(rect.id)
+              }}
+              onChange={(newAttrs: any) => {
+                const rects = rectangles.slice();
+                rects[i] = newAttrs;
+                setRectangles(rects);
+              }}
+            />
+          )
+        })}
+      </Layer>
+    </Stage>
   )
 }
+
+
+
+export default Viewer

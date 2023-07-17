@@ -49,7 +49,8 @@ export default function Design() {
       </div>
 
       <div className='bg-pink-900 col-[1/14] row-[2/9] lg:col-[2/14] lg:row-[2/10] '>
-        <Viewer design={design} />
+        {/* <App /> */}
+        <Viewer />
       </div>
 
       <aside className='bg-blue-900 col-[1/14] row-[9/10] lg:col-[1/2] lg:row-[2/10] '>

@@ -1,7 +1,8 @@
-import Image from 'next/image'
+
 import useImage from 'use-image';
 import { useEffect, useRef, useState } from 'react'
 import { Stage, Layer, Rect, Circle, Image as KImage, Transformer, Group } from 'react-konva';
+import Image from 'next/image'
 import tshirt from '~/assets/images/tshirt/white/front.png'
 import React from 'react';
 import { KonvaEventObject } from 'konva/lib/Node';
@@ -28,7 +29,7 @@ const initialRectangles = [
   },
 ];
 
-function Viewer({ design }: { design: string }) {
+export default function Preview({ design }: { design: string }) {
 
   const [rectangles, setRectangles] = useState(initialRectangles);
   const [selectedId, selectShape] = useState<string | null>(null);
@@ -104,6 +105,3 @@ function Viewer({ design }: { design: string }) {
   )
 }
 
-
-
-export default Viewer

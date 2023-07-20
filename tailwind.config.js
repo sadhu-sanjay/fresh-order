@@ -28,8 +28,18 @@ module.exports = {
         slide_in_left: 'slide_in_left 0.25s ease-in-out',
         rotateIn: 'rotateIn 0.5s ease-in-out',
         pendulum: 'pendulum 0.5s ease-in-out ',
+        rotateY180: 'rotateY180 0.5s ease-in-out  ',
+        rotateYminus180: 'rotateYminus180 0.5s ease-in-out ',
       },
       keyframes: {
+        rotateYminus180: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '100%': { transform: 'rotateY(-180deg)' },
+        },
+        rotateY180: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '100%': { transform: 'rotateY(180deg)' },
+        },
         pendulum: {
           '0%': { transform: 'rotate(-25deg)' },
         },

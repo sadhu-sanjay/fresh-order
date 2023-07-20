@@ -3,39 +3,102 @@ import dynamic from 'next/dynamic';
 const Preview = dynamic(() => import('~/app/design/Preview'), {
     ssr: false
 })
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Editor from '~/app/design/editor';
 import Navigator from '~/app/design/navigator';
 
+const initialAssets: Array<Asset> = [
+    {
+        id: '1',
+        nm: 'tshirt',
+        direction: 'front',
+        color: 'blue',
+        size: 'm',
+        front: [
+            {
+                id: 'd2',
+                asset: 'https://konvajs.org/assets/lion.png',
+                preview: 'https://konvajs.org/assets/lion.png',
+                position: {
+                    isDraggable: false,
+                    width: 144,
+                    height: 139,
+                    x: 0,
+                    y: 0
+                }
+            }
+        ],
+        back: [
+            {
+                id: 'd1',
+                asset: 'https://konvajs.org/assets/lion.png',
+                preview: 'https://konvajs.org/assets/giraffe.png',
+                position: {
+                    isDraggable: false,
+                    width: 144,
+                    height: 139,
+                    x: 0,
+                    y: 0
+                }
+            },
+        ]
+    },
+]
+
+
+const initialDesigns = [
+    {
+        x: 10,
+        y: 10,
+        width: 100,
+        height: 100,
+        fill: 'red',
+        id: 'rect1',
+        img: 'https://konvajs.org/assets/giraffe.png'
+    },
+    {
+        x: 150,
+        y: 150,
+        width: 100,
+        height: 100,
+        fill: 'green',
+        id: 'rect2',
+        img: 'https://konvajs.org/assets/giraffe.png'
+    },
+];
+
+
+
 const sGrid = {
-    display: 'grid',
     gridTemplateColumns: 'repeat(13, 1fr)',
     gridTemplateRows: 'repeat(9, 1fr)',
-    width: '100%',
-    height: '100%',
 }
 
 export default function Design() {
 
-    const [design, setDesign] = useState('https://konvajs.org/assets/lion.png')
+    const [asset, setAsset] = useState(initialAssets[0])
 
     function onImageSelect(img: string) {
-        setDesign(img)
+
+        let tempAsset = { ...asset } as Asset
+        (tempAsset.front[0] as Design).preview = img
+        setAsset(tempAsset)
+
     }
 
     return (
-        <div style={sGrid} className='absolute w-full h-full left-0 right-0 '>
+        <div style={sGrid} className='grid absolute w-full h-full left-0 right-0 '>
             <div className='col-[1/14] row-[1/2]'>
                 <Navigator />
             </div>
 
             <div className='bg-pink-900 col-[1/14] row-[2/9] lg:col-[2/14] lg:row-[2/10] '>
                 {/* <App /> */}
-                <Preview design={design} />
+                <Preview asset={asset} setAsset={setAsset} />
             </div>
 
             <aside className='bg-blue-900 col-[1/14] row-[9/10] lg:col-[1/2] lg:row-[2/10] '>
-                <Editor onImageSelect={onImageSelect} />
+                <Editor onImageSelect={onImageSelect} asset={asset} setAsset={setAsset} />
             </aside>
         </div>
     )

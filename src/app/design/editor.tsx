@@ -1,11 +1,40 @@
 import { designData } from "~/data/data"
 import { DesignOption } from "~/shared/types"
+import { _calculate_image_size } from "~/utils/resize";
 
-export default function Editor({ onImageSelect }: { onImageSelect: (URL: string) => void }) {
+export default function Editor({ onImageSelect, asset, setAsset }: {
+    onImageSelect: (URL: string) => void,
+    asset: Asset, setAsset: (asset: Asset) => void
+}) {
 
     const handleFileChange = (e: any) => {
         if (e.target.files && e.target.files[0]) {
-            onImageSelect(URL.createObjectURL(e.target.files[0]));
+            const url = URL.createObjectURL(e.target.files[0])
+
+            let newImage = new Image()
+            newImage.src = url
+
+            newImage.onload = () => {
+
+                console.log("Old dimension", newImage.width, newImage.height)
+
+                const { newWidth, newHeight } = _calculate_image_size(200, newImage.width, newImage.height)
+                newImage.width = newWidth
+                newImage.height = newHeight
+
+                let tempAsset = { ...asset } as Asset
+                let design = tempAsset.front[0] as Design
+                design.preview = url
+                design.position.height = newHeight
+                design.position.width = newWidth
+
+                setAsset(tempA
+
+                // console.log("New dimension", newImage, "old", url)
+
+                // onImageSelect(newImage.src);
+            }
+
         }
     };
 

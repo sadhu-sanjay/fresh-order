@@ -2,8 +2,7 @@ import { designData } from "~/data/data"
 import { DesignOption } from "~/shared/types"
 import { _calculate_image_size } from "~/utils/resize";
 
-export default function Editor({ onImageSelect, asset, setAsset }: {
-    onImageSelect: (URL: string) => void,
+export default function Editor({  asset, setAsset }: {
     asset: Asset, setAsset: (asset: Asset) => void
 }) {
 
@@ -23,16 +22,13 @@ export default function Editor({ onImageSelect, asset, setAsset }: {
                 newImage.height = newHeight
 
                 let tempAsset = { ...asset } as Asset
-                let design = tempAsset.front[0] as Design
+                let design = tempAsset[asset.direction][0] as Design
                 design.preview = url
                 design.position.height = newHeight
                 design.position.width = newWidth
 
-                setAsset(tempA
+                setAsset(tempAsset)
 
-                // console.log("New dimension", newImage, "old", url)
-
-                // onImageSelect(newImage.src);
             }
 
         }

@@ -12,7 +12,7 @@ import MyImage from './shapes/my-image';
 import { IconRotate } from '@tabler/icons-react';
 
 
-export default function Preview({ asset, setAsset }: { asset: Asset, setAsset: any }) {
+export default function Preview({ asset, setAsset, elstage }: { asset: Asset, setAsset: any, elstage: any }) {
 
   const [selectedId, selectShape] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,6 +51,7 @@ export default function Preview({ asset, setAsset }: { asset: Asset, setAsset: a
       </button>
 
       <Stage
+      ref={elstage}
         width={size.width}
         height={size.height}
         onMouseDown={checkDeselect}

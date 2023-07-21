@@ -1,5 +1,5 @@
 ## Introduction
 
-A Base project i use as a starter template for my next projects . 
+A full on Ecommerce Project with support with custom tshirt designing.
 
 

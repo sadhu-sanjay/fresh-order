@@ -20,7 +20,7 @@ export default function Preview({ asset, setAsset, elstage }: { asset: Asset, se
 
   useEffect(() => {
     if (containerRef.current) {
-      setSize({ width: containerRef.current.offsetHeight * 0.38, height: containerRef.current.offsetHeight * 0.36 })
+      setSize({ width: containerRef.current.offsetHeight * 0.36, height: containerRef.current.offsetHeight * 0.50 })
     }
   }, [])
 
@@ -40,7 +40,7 @@ export default function Preview({ asset, setAsset, elstage }: { asset: Asset, se
     <div ref={containerRef}
       className={`flex justify-center place-items-center relative w-full h-full bg-gradient-to-r from-sky-950 to-sky-900 stageBackground bg-contain bg-no-repeat bg-center `}
     >
-      <Image className={`absolute object-cover sm:object-contain `} alt='tshirt image on stage' src={`${asset.direction == 'back' ? tshirt.src : tshirtWhiteBack.src}`} fill />
+      <Image className={`absolute object-cover sm:object-contain `} alt='tshirt image on stage' src={`${asset.direction == 'front' ? tshirt.src : tshirtWhiteBack.src}`} fill />
       <button onClick={() => changeDirection()} type="button" className="absolute right-2 bottom-2 text-white 
       bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 
       hover:bg-gradient-to-br focus:ring-4 focus:outline-none 
@@ -49,14 +49,15 @@ export default function Preview({ asset, setAsset, elstage }: { asset: Asset, se
       font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 ">
         <IconRotate className="w-6" />
       </button>
+      
 
       <Stage
-      ref={elstage}
+        ref={elstage}
         width={size.width}
         height={size.height}
         onMouseDown={checkDeselect}
         onTouchStart={checkDeselect}
-        className='z-10 border-dotted border border-pink-900 '
+        className='z-10 relative right-1 border-dotted border border-pink-900 '
       >
 
         <Layer>

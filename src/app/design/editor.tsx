@@ -2,8 +2,8 @@ import { designData } from "~/data/data"
 import { DesignOption } from "~/shared/types"
 import { _calculate_image_size } from "~/utils/resize";
 
-export default function Editor({  asset, setAsset }: {
-    asset: Asset, setAsset: (asset: Asset) => void
+export default function Editor({ asset, setAsset, elstage }: {
+    asset: Asset, setAsset: (asset: Asset) => void, elstage: any
 }) {
 
     const handleFileChange = (e: any) => {
@@ -15,9 +15,10 @@ export default function Editor({  asset, setAsset }: {
 
             newImage.onload = () => {
 
-                console.log("Old dimension", newImage.width, newImage.height)
+                console.log("Old dimension elstage", elstage.current.attrs.width)
 
-                const { newWidth, newHeight } = _calculate_image_size(200, newImage.width, newImage.height)
+
+                const { newWidth, newHeight } = _calculate_image_size(elstage.current.attrs.width, newImage.width, newImage.height)
                 newImage.width = newWidth
                 newImage.height = newHeight
 

@@ -68,7 +68,7 @@ export default function Design() {
             </div>
 
             <aside className='bg-blue-900 col-[1/14] row-[9/10] lg:col-[1/2] lg:row-[2/10] '>
-                <Editor  asset={asset} setAsset={setAsset} />
+                <Editor elstage={elstage} asset={asset} setAsset={setAsset} />
             </aside>
         </div>
     )

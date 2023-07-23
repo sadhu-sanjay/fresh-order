@@ -38,26 +38,13 @@ export const MobileNav = () => {
             />
             <motion.ul
                 variants={variants}
-                className="absolute grid w-full gap-3 px-10 py-16 `" >
+                className={`absolute flex w-full flex-col gap-3 px-10 py-16 `} >
                 {headerData.links?.map((menulink, index) => (
-                    <div key={index} className='grid gap-3'>
-                        {/* <MenuItem > */}
-                            {/* <Link
-                                href={`${menulink.href}`}
-                                className=" inline-flex items-center 
-                                rounded-lg p-2.5 text-sm hover:bg-gray-100 
-                                focus:outline-none focus:ring-4 focus:ring-gray-200 
-                                text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 
-                                dark:focus:ring w-full font-semibold capitalize"
-                                onClick={() => toggleOpen()}>
-                                {Icon && <Icon />}
-                                <Heading3 text={menulink.label} />
-                            </Link> */}
-                            <motion.li  variants={MenuItemVariants}>
-                                <MenuItemNew key={index} menuLink={menulink} className='bg-blue-900' />
-                            </motion.li>
-                        {/* </MenuItem> */}
-                    </div>
+                    <motion.li key={index} variants={MenuItemVariants}  >
+                        {/* <Link href={menulink.href || ""} > */}
+                            <MenuItemNew menuLink={menulink} />
+                        {/* </Link> */}
+                    </motion.li>
                 ))}
 
             </motion.ul>

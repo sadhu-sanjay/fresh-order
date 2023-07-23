@@ -16,19 +16,12 @@ const itemVariants: Variants = {
     closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
 };
 
-const variants = {
-    open: {
-        transition: { opacity: 1, height: "auto",  staggerChildren: 0.04, delayChildren: 0.2,  },
-    },
-    closed: {
-        transition: {opacity: 0, height: 0, staggerChildren: 0.02, staggerDirection: -1 },
-    },
-};
 
 const MenuItemVariants = {
     open: {
         y: 0,
         opacity: 1,
+        height: 'auto',
         transition: {
             y: { stiffness: 1000, velocity: -100 },
         },
@@ -36,6 +29,7 @@ const MenuItemVariants = {
     closed: {
         y: '50%',
         opacity: 0,
+        height: 0,
         transition: {
             y: { stiffness: 1000 },
             duration: 0.04,
@@ -52,28 +46,34 @@ export default function MenuItemNew({ menuLink,
     }) {
 
     const [open, toggleOpen] = useCycle(false, true);
-    function testfunction() {
-        print()
-    }
 
     return (
         <>
-            
-            <motion.div whileTap={{ scale: 0.97 }} className="flex justify-between " onClick={() => toggleOpen()
-             }>
-                <Heading3 text={menuLink.label} />
-                <IconCircleChevronRight className="w-6" />
+            <motion.div className="flex  g-3">
+                <motion.div className="flex-grow" whileTap={{ scale: 0.97 }} onClick={() => toggleOpen()}>
+                    <Heading3 text={menuLink.label} />
+                </motion.div>
+                <motion.div
+                    variants={{
+                        open: { rotate: 90 },
+                        closed: { rotate: 0 }
+                    }}
+                    animate={open ? 'open' : 'closed'}
+                    transition={{ duration: 0.2 }}
+                >
+                    <IconCircleChevronRight className="w-6" />
+                </motion.div>
             </motion.div>
 
             {menuLink.links && // render dropdown if menuitems are there 
                 <motion.ul
-               
-                animate={ open ? 'open' : 'closed'}
+
+                    animate={open ? 'open' : 'closed'}
                     className={`${open ? 'block' : 'hidden'} transition-all ease-in-out grid w-full gap-3 px-10 py-5 `} >
                     {menuLink.links.map((value: MenuLink, index: number) => {
                         return (
                             <motion.li key={index} variants={MenuItemVariants} >
-                                <Subtitle1  props={{ text: value.label }} />
+                                <Subtitle1 props={{ text: value.label }} />
                             </motion.li>
                         )
                     })}
@@ -81,7 +81,7 @@ export default function MenuItemNew({ menuLink,
             }
 
             {children}
-            <div className="my-3 h-px w-full bg-gray-300" />
+            <div className="my-3 h-0 w-full bg-gray-300" />
 
         </>
     )

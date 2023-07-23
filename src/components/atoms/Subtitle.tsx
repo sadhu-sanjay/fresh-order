@@ -1,6 +1,6 @@
 'use client'
 
-import { TextProps } from "~/components/shared/types";
+import { TextProps } from "~/shared/types";
 import { motion } from "framer-motion";
 
 export const Subtitle = ({ props, className =''  }: { props: TextProps, className?: string }) => {

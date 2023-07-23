@@ -38,12 +38,10 @@ export const MobileNav = () => {
             />
             <motion.ul
                 variants={variants}
-                className={`absolute flex w-full flex-col gap-3 px-10 py-16 `} >
+                className={`absolute max-h-[500px] overflow-scroll flex w-full flex-col gap-3 px-10  mt-20 `} >
                 {headerData.links?.map((menulink, index) => (
                     <motion.li key={index} variants={MenuItemVariants}  >
-                        {/* <Link href={menulink.href || ""} > */}
                             <MenuItemNew menuLink={menulink} />
-                        {/* </Link> */}
                     </motion.li>
                 ))}
 

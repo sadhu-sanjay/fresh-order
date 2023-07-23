@@ -50,8 +50,15 @@ export default function MenuItemNew({ menuLink,
     return (
         <>
             <motion.div className="flex  g-3">
-                <motion.div className="flex-grow" whileTap={{ scale: 0.97 }} onClick={() => toggleOpen()}>
-                    <Heading3 text={menuLink.label} />
+                <motion.div
+                    className="flex-grow flex justify-start" whileTap={{ scale: 0.97 }} onClick={() => toggleOpen()}>
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-device-mobile" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14z" />
+                            <path d="M11 4h2" />
+                            <path d="M12 17v.01" />
+                        </svg> */}
+                    <Heading3 className="bg-red-900" text={menuLink.label} />
                 </motion.div>
                 <motion.div
                     variants={{
@@ -61,27 +68,26 @@ export default function MenuItemNew({ menuLink,
                     animate={open ? 'open' : 'closed'}
                     transition={{ duration: 0.2 }}
                 >
-                    <IconCircleChevronRight className="w-6" />
+                    <IconCircleChevronRight className="dark:text-gray-200 text-gray-800 w-6" />
                 </motion.div>
             </motion.div>
 
-            {menuLink.links && // render dropdown if menuitems are there 
-                <motion.ul
+            {menuLink.links && <motion.ul
 
-                    animate={open ? 'open' : 'closed'}
-                    className={`${open ? 'block' : 'hidden'} transition-all ease-in-out grid w-full gap-3 px-10 py-5 `} >
-                    {menuLink.links.map((value: MenuLink, index: number) => {
-                        return (
-                            <motion.li key={index} variants={MenuItemVariants} >
-                                <Subtitle1 props={{ text: value.label }} />
-                            </motion.li>
-                        )
-                    })}
-                </motion.ul>
+                animate={open ? 'open' : 'closed'}
+                className={`${open ? 'block' : 'hidden'} transition-all ease-in-out grid w-full gap-3 px-10 py-5 `} >
+                {menuLink.links.map((value: MenuLink, index: number) => {
+                    return (
+                        <motion.li key={index} variants={MenuItemVariants} >
+                            <Subtitle1 props={{ text: value.label }} />
+                        </motion.li>
+                    )
+                })}
+            </motion.ul>
             }
 
             {children}
-            <div className="my-3 h-0 w-full bg-gray-300" />
+            <div className="my-3 h-px w-full bg-gray-300" />
 
         </>
     )

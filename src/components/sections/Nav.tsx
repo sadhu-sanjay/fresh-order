@@ -10,7 +10,7 @@ import { headerData } from "~/data/data";
 import CTA from "~/components/atoms/CTA";
 import { CallToAction, MenuLink } from "~/shared/types";
 import ToggleDarkMode from "~/components/atoms/ToggleDarkMode";
-import { Heading3 } from "~/components/atoms/Heading3";
+import { Heading4 } from "~/components/atoms/Heading4";
 import { Subtitle1 } from "~/components/atoms/Subtitle1";
 import React from "react";
 import { Heading2 } from "../atoms/Heading2";

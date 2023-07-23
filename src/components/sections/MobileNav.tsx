@@ -9,6 +9,9 @@ import { headerData } from '~/data/data'
 import ToggleDarkMode from '~/components/atoms/ToggleDarkMode';
 import CTA from '../atoms/CTA';
 import { CallToAction } from '../../shared/types';
+import MenuItemNew from '../organisms/MenuItemNew';
+import { Heading2 } from '../atoms/Heading2';
+import { Heading4 } from '../atoms/Heading4';
 import { Heading3 } from '../atoms/Heading3';
 
 
@@ -36,21 +39,24 @@ export const MobileNav = () => {
             <motion.ul
                 variants={variants}
                 className="absolute grid w-full gap-3 px-10 py-16 `" >
-                {headerData.links?.map(({ href, label, icon: Icon }, index) => (
+                {headerData.links?.map((menulink, index) => (
                     <div key={index} className='grid gap-3'>
-                        <MenuItem >
-                            <Link
-                                href={`${href}`}
+                        {/* <MenuItem > */}
+                            {/* <Link
+                                href={`${menulink.href}`}
                                 className=" inline-flex items-center 
                                 rounded-lg p-2.5 text-sm hover:bg-gray-100 
                                 focus:outline-none focus:ring-4 focus:ring-gray-200 
                                 text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 
                                 dark:focus:ring w-full font-semibold capitalize"
                                 onClick={() => toggleOpen()}>
-                                {/* {Icon && <Icon />} */}
-                                <Heading3 text={label} />
-                            </Link>
-                        </MenuItem>
+                                {Icon && <Icon />}
+                                <Heading3 text={menulink.label} />
+                            </Link> */}
+                            <motion.li  variants={MenuItemVariants}>
+                                <MenuItemNew key={index} menuLink={menulink} className='bg-blue-900' />
+                            </motion.li>
+                        {/* </MenuItem> */}
                     </div>
                 ))}
 
@@ -119,8 +125,6 @@ const MenuItem = ({
 }) => {
     return (
         <motion.li variants={MenuItemVariants} className={className}>
-            {children}
-            <div className="my-3 h-px w-full bg-gray-300" />
         </motion.li>
     );
 };
@@ -129,12 +133,14 @@ const MenuItemVariants = {
     open: {
         y: 0,
         opacity: 1,
+        height: 'auto',
         transition: {
             y: { stiffness: 1000, velocity: -100 },
         },
     },
     closed: {
         y: 50,
+        height: 0,
         opacity: 0,
         transition: {
             y: { stiffness: 1000 },
@@ -146,7 +152,7 @@ const MenuItemVariants = {
 const MenuToggle = ({ toggle }: { toggle: any }) => (
     <button
         onClick={toggle}
-        className="pointer-events-auto absolute right-8 top-8 z-20"
+        className="pointer-events-auto absolute right-10 top-8 z-20"
     >
         <svg width="23" height="23" viewBox="0 0 23 23">
             <Path

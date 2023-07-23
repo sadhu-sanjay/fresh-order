@@ -127,6 +127,17 @@ export const featuresLargeData: FeatureProps = {
 export const headerData: HeaderProps = {
     links: [
         {
+            label: 'Services',
+            href: '/services',
+            icon: IconChevronDown,
+            links: [
+                {
+                    href: '/',
+                    label: 'SomeLik'
+                }
+            ]
+        },
+        {
             label: 'Products',
             icon: IconChevronDown,
             links: [
@@ -155,11 +166,6 @@ export const headerData: HeaderProps = {
                     href: '/terms',
                 },
             ]
-        },
-        {
-            label: 'Services',
-            href: '/services',
-            icon: IconChevronDown,
         },
         {
             label: 'Templates',

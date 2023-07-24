@@ -40,8 +40,11 @@ export const MobileNav = () => {
                 variants={variants}
                 className={`absolute max-h-[500px] overflow-scroll flex w-full flex-col gap-3 px-10  mt-20 `} >
                 {headerData.links?.map((menulink, index) => (
-                    <motion.li key={index} variants={MenuItemVariants}  >
+                    <motion.li key={index} variants={MenuItemVariants} 
+                    >
+                        <Link href={menulink.href || ''} passHref>
                             <MenuItemNew menuLink={menulink} />
+                        </Link>
                     </motion.li>
                 ))}
 

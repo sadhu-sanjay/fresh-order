@@ -3,7 +3,7 @@
 import { TextProps } from "~/shared/types";
 import { motion } from "framer-motion";
 
-export const Subtitle1 = ({ props, className = '' }: { props: TextProps, className?: string }) => {
+export const Subtitle3 = ({ props, className = '' }: { props: TextProps, className?: string }) => {
     const { text, alignment } = props;
 
     return (
@@ -20,10 +20,8 @@ export const Subtitle1 = ({ props, className = '' }: { props: TextProps, classNa
         >
             <div className={`${className} ${alignment} rounded-xl
             flex-shrink-0 w-auto h-auto whitespace-pre-wrap
-            break-words overflow-visible relative 
-            font-medium font-sans
-            text-gray-500 leading-6 dark:text-gray-200 
-            text-xl `
+            break-words overflow-visible relative font-medium font-sans
+            text-gray-500 leading-6 dark:text-gray-200 text-base`
             }>
                 {text}
             </div>

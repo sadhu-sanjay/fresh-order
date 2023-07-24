@@ -1,5 +1,5 @@
-import { IconHome2, IconChevronDown, IconFileTypography } from '@tabler/icons-react'
-import { CircleStackIcon, PhotoIcon } from '@heroicons/react/24/solid'
+import { IconHome2, IconChevronDown, IconFileTypography, IconDeviceMobile, IconHelpCircle, IconShirtSport, IconTemplate, IconInfoCircle } from '@tabler/icons-react'
+import { CircleStackIcon, PhotoIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/solid'
 
 import {
     DoubleTextProps,
@@ -126,20 +126,10 @@ export const featuresLargeData: FeatureProps = {
 
 export const headerData: HeaderProps = {
     links: [
-        {
-            label: 'Services',
-            href: '/services',
-            icon: IconChevronDown,
-            links: [
-                {
-                    href: '/',
-                    label: 'SomeLik'
-                }
-            ]
-        },
+        
         {
             label: 'Products',
-            icon: IconChevronDown,
+            icon: IconShirtSport,
             links: [
                 {
                     label: 'About Us',
@@ -168,19 +158,30 @@ export const headerData: HeaderProps = {
             ]
         },
         {
+            label: 'Services',
+            href: '/services',
+            icon: WrenchScrewdriverIcon,
+            links: [
+                {
+                    href: '/',
+                    label: 'SomeLik'
+                }
+            ]
+        },
+        {
             label: 'Templates',
             href: '/templates',
-            icon: IconChevronDown,
+            icon: IconTemplate,
         },
         {
             label: 'Help',
             href: '/help',
-            icon: IconChevronDown,
+            icon: IconHelpCircle,
         },
         {
             label: 'About',
             href: '/about',
-            icon: IconHome2,
+            icon: IconInfoCircle,
         },
 
     ],

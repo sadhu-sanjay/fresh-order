@@ -11,7 +11,7 @@ import CTA from "~/components/atoms/CTA";
 import { CallToAction, MenuLink } from "~/shared/types";
 import ToggleDarkMode from "~/components/atoms/ToggleDarkMode";
 import { Heading4 } from "~/components/atoms/Heading4";
-import { Subtitle1 } from "~/components/atoms/Subtitle1";
+import { Subtitle3 } from "~/components/atoms/Subtitle3";
 import React from "react";
 import { Heading2 } from "../atoms/Heading2";
 import AnimateUp from "../common/BaseAnimation";
@@ -76,6 +76,6 @@ const MenuItem = (item: MenuLink) => {
     dark:hover:bg-gray-700 hover:bg-gray-100 rounded-full drop-shadow-sm 
     dark:text-white dark:hover:text-white`}
     >
-        <Subtitle1 props={{ text: item.label }} />
+        <Subtitle3 props={{ text: item.label }} />
     </Link>;
 }

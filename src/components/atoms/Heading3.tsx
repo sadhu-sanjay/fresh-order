@@ -1,31 +1,52 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ReactNode } from 'react'
 import AnimateUp from '~/components/common/BaseAnimation'
 import { TailWindTextAlign, TailWindTextSizes, TextProps } from '~/shared/types'
+import  { animationEnabled } from '~/utils/config'
 
-export const Heading3 = ({ className, text, textAlign = 'text-left', animate = true }: { className?: string, text?: string, textAlign?: TailWindTextAlign, animate?: boolean }) => {
+export const Heading3 = (
+    { className,
+        text,
+        textAlign = 'text-left',
+        animate = true,
+        children,
+        animateMargin
+    }: {
+        className?: string,
+        text?: string,
+        textAlign?: TailWindTextAlign,
+        animate?: boolean,
+        animateMargin?: string,
+        children?: ReactNode
+    }) => {
 
-    return animate ? (
-        <AnimateUp>
-            <TextContainer />
-        </AnimateUp>
-    ) : (
-        <TextContainer />
-    );
 
-    function TextContainer() {
-        return (
-            <div
-                className={` flex-shrink-0 w-auto h-auto whitespace-pre break-words relative overflow-visible
+    const animationProperties = {
+        initial: { y: '100%', opacity: 0 },
+        whileInView: { y: 0, opacity: 1 },
+        viewport: { once: true, margin: animateMargin },
+        transition: { type: 'spring', stiffness: 100, delay: 0, mass: 2, damping: 30 },
+    }
+
+    const shouldTriggerAnimation = animationEnabled && animate
+
+    return (
+        <motion.div
+            {...(shouldTriggerAnimation ? animationProperties : {})}
+            className={` flex-shrink-0 w-auto h-auto whitespace-pre 
+            break-words relative overflow-visible
             font-bold font-sans
             dark:text-textHeadingDark text-textHeading  
             text-2xl
             tracking-tight leading-6 
             ${textAlign}
+            ${className}
+            flex flex-col jutify-center
             `} >
-                {text}
-            </div>
-        )
-    }
+            {text}
+            {children}
+        </motion.div>
+    )
 }

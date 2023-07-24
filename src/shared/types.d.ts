@@ -52,7 +52,7 @@ interface Link {
     label?: string
     href?: string
     ariaLabel?: string
-    icon?: Function
+    icon?: FunctionComponent<React.SVGProps<SVGSVGElement>>,
 }
 
 interface MenuLink extends Link {
@@ -65,7 +65,7 @@ interface DesignDashboard {
 }
 interface DesignOption {
     name: string
-    icon?: Function
+    icon?: FunctionComponent<React.SVGProps<SVGSVGElement>>,
 }
 
 interface CallToAction {

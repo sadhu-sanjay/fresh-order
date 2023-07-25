@@ -126,10 +126,10 @@ export const featuresLargeData: FeatureProps = {
 
 export const headerData: HeaderProps = {
     links: [
-        
         {
             label: 'Products',
             icon: IconShirtSport,
+            href: '/products',
             links: [
                 {
                     label: 'About Us',
@@ -170,7 +170,7 @@ export const headerData: HeaderProps = {
         },
         {
             label: 'Templates',
-            href: '/templates',
+            href: '/design',
             icon: IconTemplate,
         },
         {

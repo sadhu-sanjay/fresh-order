@@ -37,9 +37,9 @@ export const Heading3 = (
             {...(shouldTriggerAnimation ? animationProperties : {})}
             className={` flex-shrink-0 w-auto h-auto whitespace-pre 
             break-words relative overflow-visible
-            font-bold font-sans
+            font-sans font-semibold
             dark:text-textHeadingDark text-textHeading  
-            text-2xl
+            text-xl
             tracking-tight leading-6 
             ${textAlign}
             ${className}

@@ -1,11 +1,14 @@
 
 import { useState, ReactNode } from "react";
-import { motion, useCycle, Variants } from "framer-motion";
+import { Cycle, motion, useCycle, Variants } from "framer-motion";
 import { MenuLink } from "~/shared/types";
 import { IconChevronRight, IconCircleChevronRight } from "@tabler/icons-react";
 import { Heading3 } from "../atoms/Heading3";
 import { Heading2 } from "../atoms/Heading2";
 import { Subtitle1 } from "../atoms/Subtitle1";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 const itemVariants: Variants = {
     open: {
@@ -37,48 +40,66 @@ const MenuItemVariants = {
     },
 }
 
-export default function MenuItemNew({ menuLink,
-    className,
-    children }: {
+export default function MenuItemNew(
+    {
+        menuLink,
+        className,
+        children,
+        toggle,
+    }: {
         menuLink: MenuLink,
         className?: string,
         children?: ReactNode
+        toggle?: Cycle
     }) {
 
+    const router = useRouter()
     const [open, toggleOpen] = useCycle(false, true);
     const Icon = menuLink.icon
+    const handleClick = (e: React.MouseEvent) => {
+        if (menuLink.links && menuLink.links.length > 0) {
+            e.preventDefault();
+            toggleOpen()
+        } else {
+            if (toggle) toggle()
+            router.push(menuLink.href)
+        }
+    }
 
     return (
         <>
-            <motion.div className="flex  g-3"
-                whileHover={{ scale: 1.1 }}
-                onClick={() => toggleOpen()}
-            >
+            <Link href={menuLink.href} >
                 <motion.div
-                    className="flex-grow align-middle gap-2 flex justify-start" >
-                    {Icon && <Icon className="w-6" />}
-                    
-                    <Heading3 className="flex flex-col justify-center" text={menuLink.label} />
-                </motion.div>
-                <motion.button
-                    variants={{
-                        open: { rotate: 90 },
-                        closed: { rotate: 0 }
-                    }}
-                    animate={open ? 'open' : 'closed'}
-                    transition={{ duration: 0.2 }}
+                    className="flex g-3"
+                    whileHover={{ scale: 1.1 }}
+                    onClick={handleClick}
                 >
-                    <IconChevronRight className="dark:text-gray-200 text-gray-800 w-6" />
-                </motion.button>
-            </motion.div>
+                    <motion.div
+                        className="flex-grow align-middle gap-2 flex justify-start" >
+                        {Icon && <Icon className="w-6" />}
+
+                        <Heading3 className="flex flex-col justify-center" text={menuLink.label} />
+                    </motion.div>
+                    <motion.button
+                        variants={{
+                            open: { rotate: 90 },
+                            closed: { rotate: 0 }
+                        }}
+                        animate={open ? 'open' : 'closed'}
+                        transition={{ duration: 0.2 }}
+                    >
+                        <IconChevronRight className="dark:text-gray-200 text-gray-800 w-6" />
+                    </motion.button>
+                </motion.div>
+            </Link>
 
             {menuLink.links && <motion.ul
 
                 animate={open ? 'open' : 'closed'}
-                className={`${open ? 'block' : 'hidden'} transition-all ease-in-out grid w-full gap-3 px-10 py-5 `} >
+                className={`${open ? 'block' : 'hidden'} bg-blue-900 grid w-full gap-3 px-10 py-5 `} >
                 {menuLink.links.map((value: MenuLink, index: number) => {
                     return (
-                        <motion.li key={index} variants={MenuItemVariants} whileHover={{scale: 1.1}} >
+                        <motion.li key={index} variants={MenuItemVariants} whileHover={{ scale: 1.1 }} >
                             <Subtitle1 props={{ text: value.label }} />
                         </motion.li>
                     )

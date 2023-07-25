@@ -50,7 +50,7 @@ interface ToggleMenuProps {
 
 interface Link {
     label?: string
-    href?: string
+    href: string
     ariaLabel?: string
     icon?: FunctionComponent<React.SVGProps<SVGSVGElement>>,
 }

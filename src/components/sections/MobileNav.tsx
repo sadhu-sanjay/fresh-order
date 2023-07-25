@@ -40,11 +40,8 @@ export const MobileNav = () => {
                 variants={variants}
                 className={`absolute max-h-[500px] overflow-scroll flex w-full flex-col gap-3 px-10  mt-20 `} >
                 {headerData.links?.map((menulink, index) => (
-                    <motion.li key={index} variants={MenuItemVariants} 
-                    >
-                        <Link href={menulink.href || ''} passHref>
-                            <MenuItemNew menuLink={menulink} />
-                        </Link>
+                    <motion.li key={index} variants={MenuItemVariants} >
+                        <MenuItemNew menuLink={menulink} toggle={toggleOpen} />
                     </motion.li>
                 ))}
 
@@ -140,7 +137,7 @@ const MenuItemVariants = {
 const MenuToggle = ({ toggle }: { toggle: any }) => (
     <button
         onClick={toggle}
-        className="pointer-events-auto absolute right-8 top-8 z-20"
+        className="pointer-events-auto absolute right-10 top-8 z-20"
     >
         <svg width="23" height="23" viewBox="0 0 23 23">
             <Path

@@ -16,6 +16,7 @@ import React from "react";
 import { Heading2 } from "../atoms/Heading2";
 import AnimateUp from "../common/BaseAnimation";
 import { Heading } from "../atoms/Heading";
+import MenuItemNew from "../organisms/MenuItemNew";
 
 const transparentHeaderSegments = new Set(["about", "projects"]);
 const hiddenHeaderSegments = new Set(["design"]);
@@ -30,7 +31,7 @@ export const Nav = () => {
     return (
         <div
             className={`${!hiddenHeaderSegments.has(segment!) ? "h-20" : "h-0"} transition-all ease-in-out duration-500 sticky top-0 w-screen flex justify-center border-b 
-            border-gray-200 bg-white backdrop-blur-xl z-30  `}
+            border-gray-200 bg-white backdrop-blur-xl z-30 dark:bg-gray-900 dark:border-gray-700 `}
         >
             <div className={`${!hiddenHeaderSegments.has(segment!) ? "visible" : "collapse"} h-20 mx-6 sm:mx-20 flex max-w-screen-xl items-center justify-between w-full`}>
                 <Link href="/"
@@ -42,8 +43,9 @@ export const Nav = () => {
                 </Link>
 
                 <div className="hidden items-center sm:flex ">
-                    {headerData.links?.map((item) => (
-                        <MenuItem key={`item-${item.label}`} {...item} />
+                    {headerData.links?.map((item, index) => (
+                        // <MenuItem key={`item-${item.label}`} {...item} />
+                        <MenuItemNew   key={index} menuLink={item} />
                     ))}
                     <div className="flex ml-2 w-full items-center justify-between md:w-auto">
                         {showToggleTheme && <ToggleDarkMode />}
@@ -76,6 +78,7 @@ const MenuItem = (item: MenuLink) => {
     dark:hover:bg-gray-700 hover:bg-gray-100 rounded-full drop-shadow-sm 
     dark:text-white dark:hover:text-white`}
     >
+        
         <Subtitle3 props={{ text: item.label }} />
     </Link>;
 }

@@ -30,10 +30,10 @@ export const Nav = () => {
 
     return (
         <div
-            className={`${!hiddenHeaderSegments.has(segment!) ? "h-20" : "h-0"} transition-all ease-in-out duration-500 sticky top-0 w-screen flex justify-center border-b 
+            className={`${!hiddenHeaderSegments.has(segment!) ? "h-16" : "h-0"} transition-all ease-in-out duration-500 sticky top-0 w-screen flex justify-center border-b 
             border-gray-200 bg-white backdrop-blur-xl z-30 dark:bg-gray-900 dark:border-gray-700 `}
         >
-            <div className={`${!hiddenHeaderSegments.has(segment!) ? "visible" : "collapse"} h-20 mx-6 sm:mx-20 flex max-w-screen-xl items-center justify-between w-full`}>
+            <div className={`${!hiddenHeaderSegments.has(segment!) ? "visible" : "collapse"} h-16 mx-6 sm:mx-20 flex max-w-screen-xl items-center justify-between w-full`}>
                 <Link href="/"
                     className="flex flex-row items-center justify-center space-x-2">
                     <AnimateUp >

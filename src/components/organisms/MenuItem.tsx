@@ -77,14 +77,14 @@ export function MenuItem(
             >
                 <motion.div
                     className="flex hover:bg-gray-100 dark:hover:bg-gray-800
-                    p-4 m-2  rounded-full"
+                    p-4 m-2 sm:py-2 sm:m-1 rounded-full"
                     whileHover={{ scale: 1.1 }}
                     onClick={handleClick}
                 >
                     <motion.div
                         className="flex-grow align-middle gap-4 flex justify-start"
                     >
-                        {Icon && <Icon className="w-6" />}
+                        {Icon && <Icon className="w-6 sm:hidden" />}
                         <Heading3 className="flex flex-col justify-center" text={menuLink.label} />
                     </motion.div>
                     {menuLink.links && menuLink.links.length > 0
@@ -97,7 +97,7 @@ export function MenuItem(
                             animate={open ? 'open' : 'closed'}
                             transition={{ duration: 0.2 }}
                         >
-                            <IconChevronRight className="dark:text-gray-200 text-gray-800 w-6" />
+                            {/* <IconChevronRight className="dark:text-gray-200 text-gray-800 w-6" /> */}
                         </motion.button>
                     }
                 </motion.div>

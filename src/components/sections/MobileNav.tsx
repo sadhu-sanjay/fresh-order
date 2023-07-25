@@ -9,7 +9,7 @@ import { headerData } from '~/data/data'
 import ToggleDarkMode from '~/components/atoms/ToggleDarkMode';
 import CTA from '../atoms/CTA';
 import { CallToAction } from '../../shared/types';
-import MenuItemNew from '../organisms/MenuItemNew';
+import {MenuItem} from '../organisms/MenuItem';
 import { Heading2 } from '../atoms/Heading2';
 import { Heading4 } from '../atoms/Heading4';
 import { Heading3 } from '../atoms/Heading3';
@@ -38,10 +38,10 @@ export const MobileNav = () => {
             />
             <motion.ul
                 variants={variants}
-                className={`absolute max-h-[500px] overflow-scroll flex w-full flex-col gap-3 px-10  mt-20 `} >
+                className={`absolute  max-h-[550px] overflow-scroll flex w-full flex-col px-10 p-20 `} >
                 {headerData.links?.map((menulink, index) => (
                     <motion.li key={index} variants={MenuItemVariants} >
-                        <MenuItemNew menuLink={menulink} toggle={toggleOpen} />
+                        <MenuItem menuLink={menulink} toggle={toggleOpen} />
                     </motion.li>
                 ))}
 
@@ -99,19 +99,6 @@ const sidebar = {
             damping: 40,
         },
     },
-};
-
-const MenuItem = ({
-    className,
-    children,
-}: {
-    className?: string;
-    children?: ReactNode;
-}) => {
-    return (
-        <motion.li variants={MenuItemVariants} className={className}>
-        </motion.li>
-    );
 };
 
 const MenuItemVariants = {

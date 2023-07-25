@@ -16,7 +16,7 @@ import React from "react";
 import { Heading2 } from "../atoms/Heading2";
 import AnimateUp from "../common/BaseAnimation";
 import { Heading } from "../atoms/Heading";
-import MenuItemNew from "../organisms/MenuItemNew";
+import { MenuItem } from "../organisms/MenuItem";
 
 const transparentHeaderSegments = new Set(["about", "projects"]);
 const hiddenHeaderSegments = new Set(["design"]);
@@ -45,7 +45,8 @@ export const Nav = () => {
                 <div className="hidden items-center sm:flex ">
                     {headerData.links?.map((item, index) => (
                         // <MenuItem key={`item-${item.label}`} {...item} />
-                        <MenuItemNew   key={index} menuLink={item} />
+                        
+                        <MenuItem   key={index} menuLink={item} />
                     ))}
                     <div className="flex ml-2 w-full items-center justify-between md:w-auto">
                         {showToggleTheme && <ToggleDarkMode />}
@@ -69,7 +70,7 @@ export const Nav = () => {
 }
 
 
-const MenuItem = (item: MenuLink) => {
+const MenuItemOld = (item: MenuLink) => {
     return <Link
         key={item.label}
         href={item.href || ''}
@@ -78,7 +79,6 @@ const MenuItem = (item: MenuLink) => {
     dark:hover:bg-gray-700 hover:bg-gray-100 rounded-full drop-shadow-sm 
     dark:text-white dark:hover:text-white`}
     >
-        
         <Subtitle3 props={{ text: item.label }} />
     </Link>;
 }

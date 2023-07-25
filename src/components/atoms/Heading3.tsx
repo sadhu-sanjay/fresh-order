@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 import AnimateUp from '~/components/common/BaseAnimation'
 import { TailWindTextAlign, TailWindTextSizes, TextProps } from '~/shared/types'
-import  { animationEnabled } from '~/utils/config'
+import { animationEnabled } from '~/utils/config'
 
 export const Heading3 = (
     { className,
@@ -39,7 +39,7 @@ export const Heading3 = (
             break-words relative overflow-visible
             font-sans font-semibold
             dark:text-textHeadingDark text-textHeading  
-            text-xl
+            text-base
             tracking-tight leading-6 
             ${textAlign}
             ${className}

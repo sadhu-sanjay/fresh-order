@@ -40,7 +40,7 @@ const MenuItemVariants = {
     },
 }
 
-export default function MenuItemNew(
+export function MenuItem(
     {
         menuLink,
         className,
@@ -67,36 +67,46 @@ export default function MenuItemNew(
     }
 
     return (
-        <>
-            <Link href={menuLink.href} >
+        <div>
+            <Link href={menuLink.href}
+            //     className={`
+            // transition-colors ease-in-out hover:text-black
+            // dark:hover:bg-gray-700 hover:bg-gray-100 rounded-full drop-shadow-sm 
+            // dark:text-white dark:hover:text-white `
+            //     }
+            >
                 <motion.div
-                    className="flex g-3"
+                    className="flex hover:bg-gray-100 dark:hover:bg-gray-800
+                    p-4 m-2  rounded-full"
                     whileHover={{ scale: 1.1 }}
                     onClick={handleClick}
                 >
                     <motion.div
-                        className="flex-grow align-middle gap-2 flex justify-start" >
+                        className="flex-grow align-middle gap-4 flex justify-start"
+                    >
                         {Icon && <Icon className="w-6" />}
-
                         <Heading3 className="flex flex-col justify-center" text={menuLink.label} />
                     </motion.div>
-                    <motion.button
-                        variants={{
-                            open: { rotate: 90 },
-                            closed: { rotate: 0 }
-                        }}
-                        animate={open ? 'open' : 'closed'}
-                        transition={{ duration: 0.2 }}
-                    >
-                        <IconChevronRight className="dark:text-gray-200 text-gray-800 w-6" />
-                    </motion.button>
+                    {menuLink.links && menuLink.links.length > 0
+                        &&
+                        <motion.button
+                            variants={{
+                                open: { rotate: 90 },
+                                closed: { rotate: 0 }
+                            }}
+                            animate={open ? 'open' : 'closed'}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <IconChevronRight className="dark:text-gray-200 text-gray-800 w-6" />
+                        </motion.button>
+                    }
                 </motion.div>
             </Link>
 
             {menuLink.links && <motion.ul
 
                 animate={open ? 'open' : 'closed'}
-                className={`${open ? 'block' : 'hidden'} bg-blue-900 grid w-full gap-3 px-10 py-5 `} >
+                className={`${open ? 'block' : 'hidden'} relative sm:absolute bg-blue-900 grid w-auto gap-3 px-10 py-5 `} >
                 {menuLink.links.map((value: MenuLink, index: number) => {
                     return (
                         <motion.li key={index} variants={MenuItemVariants} whileHover={{ scale: 1.1 }} >
@@ -108,8 +118,8 @@ export default function MenuItemNew(
             }
 
             {children}
-            <div className="my-3 h-px w-full bg-gray-300" />
+            <div className="sm:hidden  h-px w-full bg-gray-300" />
 
-        </>
+        </div>
     )
 }

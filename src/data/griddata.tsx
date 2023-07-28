@@ -1,4 +1,4 @@
-import { FeatureProps } from "~/components/shared/types";
+import { FeatureProps } from "~/shared/types";
 import frontImage from '~/assets/images/front.webp';
 
 export const grid1Data: Array<FeatureProps> = [

@@ -1,18 +1,21 @@
 import { Rect, Circle, Image as KImage, Transformer } from 'react-konva';
 import { useEffect, useRef, useState } from 'react'
 import { KonvaEventObject } from 'konva/lib/Node';
+import Konva from 'konva';
+import React from 'react';
+
 
 const Rectangle = ({ shapeProps, isSelected, onSelect, onChange }:
     { shapeProps: any, isSelected: boolean, onSelect: any, onChange: any }) => {
   
     const shapeRef = useRef(null)
-    const trRef = useRef(null)
+    const trRef = React.useRef<Konva.Transformer>(null);
 
     useEffect(() => {
-      if (isSelected && trRef && trRef.current) {
+      if (isSelected && trRef && trRef.current && shapeRef.current) {
         // we need to attach transformer manually
         trRef.current.nodes([shapeRef.current]);
-        trRef.current.getLayer().batchDraw();
+        trRef.current.getLayer()?.batchDraw();
       }
     }, [isSelected])
   

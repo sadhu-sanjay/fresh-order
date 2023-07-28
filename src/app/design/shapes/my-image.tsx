@@ -3,23 +3,26 @@ import { use, useEffect, useRef, useState } from 'react'
 import { KonvaEventObject } from 'konva/lib/Node';
 import useImage from 'use-image';
 import waterPark from '~/assets/images/designs/water_park@0.5x.png'
+import React from 'react';
+import Konva from 'konva';
 
 const MyImage = ({ shapeProps, isSelected, onSelect, onChange, design }:
     { shapeProps: any, isSelected: boolean, onSelect: any, onChange: any,
     design: string }) => {
   
     const shapeRef = useRef(null)
-    const trRef = useRef(null)
+    const trRef = React.useRef<Konva.Transformer>(null);
     const [image, setImage] = useImage(waterPark.src)
     // let designImage = useImage(design)
     var [designImage] = useImage(design)
   
     useEffect(() => {
 
-      if (isSelected && trRef && trRef.current) {
+      if (isSelected && trRef && trRef.current && shapeRef.current) {
         // we need to attach transformer manually
+
         trRef.current.nodes([shapeRef.current]);
-        trRef.current.getLayer().batchDraw();
+        trRef.current.getLayer()?.batchDraw();
       }
 
     }, [isSelected])

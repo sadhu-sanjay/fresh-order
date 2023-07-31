@@ -1,12 +1,12 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Play } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import { MobileNav } from '../components/sections/MobileNav'
 import { Nav } from '~/components/sections/Nav'
 import { ThemeController } from '~/components/controller/ThemeController'
 import { ThemeProvider } from 'next-themes'
 
-const inter = Play({ subsets: ['latin'], weight: '700' })
+const inter = Roboto({ subsets: ['latin'], weight: '700' })
 
 export const metadata: Metadata = {
   title: 'Create Next App',

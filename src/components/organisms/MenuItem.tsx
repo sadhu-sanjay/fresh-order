@@ -73,14 +73,14 @@ export function MenuItem({
       >
         <motion.div
           className="flex flex-col hover:bg-gray-100 dark:hover:bg-gray-800
-                    p-4 m-2 sm:py-2 sm:m-1  rounded-md "
-          whileHover={{ scale: 1.1 }}
+                    p-4 m-2 sm:py-2 sm:m-1  rounded-sm "
+          // whileHover={{ scale: 1.1 }}
           onMouseEnter={() => toggleOpen()}
           onMouseLeave={() => toggleOpen()}
           onClick={handleClick}
         >
           <motion.div className="flex-grow align-middle gap-4 flex justify-start">
-            {Icon && <Icon className="  w-6 sm:hidden" />}
+            {Icon && <Icon className=" w-6 sm:hidden" />}
             <Heading3
               className="flex flex-col justify-center"
               text={menuLink.label}
@@ -98,37 +98,45 @@ export function MenuItem({
               </motion.button>
             )}
           </motion.div>
-
-          {/* // weather to show chevron or not */}
-
-          {menuLink.links && (
-            <motion.ul
-              animate={open ? "open" : "closed"}
-              className={`${open ? "block" : "hidden"} 
-                        m-2
-                        relative sm:absolute 
-                        shadow-md rounded-md
-                        bg-blue-100 
-                        grid gap-3
-                        w-auto px-10 py-5 `}
-            >
-              {menuLink.links.map((value: MenuLink, index: number) => {
-                return (
-                  <motion.li
-                    key={index}
-                    variants={MenuItemVariants}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <Subtitle1 props={{ text: value.label }} />
-                  </motion.li>
-                );
-              })}
-            </motion.ul>
-          )}
         </motion.div>
       </Link>
+      {menuLink.links && (
+        <motion.ul
+          animate={open ? "open" : "closed"}
+          className={`${open ? "block" : "hidden"} 
+                        relative sm:absolute 
+                        rounded-sm
+                        shadow-sm 
+                        bg-slate-50
+                        dark:bg-gray-800 
+                        grid gap-3
+                        my-2 mx-1 w-auto sm:px-4 py-4 `}
+        >
+          {menuLink.links.map((value: MenuLink, index: number) => {
+            return (
+              <motion.li key={index} variants={MenuItemVariants}>
+                {/* <Subtitle1 props={{ text: value.label }} /> */}
+                <div
+                  className="flex-shrink-0 
+                w-auto whitespace-pre 
+                relative 
+                font-semibold 
+                font-inter 
+                text-gray-500 
+                dark:text-gray-400
+                text-xs 
+                leading-5"
+                >
+                  {/* Content */}
+                  {value.label}
+                </div>
+              </motion.li>
+            );
+          })}
+        </motion.ul>
+      )}
 
-      {children}
+      {/* {children} */}
       <div className="sm:hidden  h-px w-full bg-gray-300" />
     </div>
   );

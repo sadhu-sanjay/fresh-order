@@ -36,6 +36,7 @@ export const MobileNav = () => {
                 dark:bg-gradient-to-l dark:from-slate-800 dark:bg-slate-900'
                 variants={sidebar}
             />
+            
             <motion.ul
                 variants={variants}
                 className={`absolute  max-h-[550px] overflow-scroll flex w-full flex-col px-10 p-20 `} >

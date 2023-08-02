@@ -73,14 +73,14 @@ export function MenuItem({
       >
         <motion.div
           className="flex flex-col hover:bg-gray-100 dark:hover:bg-gray-800
-                    p-4 m-2 sm:py-2 sm:m-1  rounded-sm "
+                    p-4 m-2 sm:py-2 sm:m-1 relative  rounded-sm "
           // whileHover={{ scale: 1.1 }}
           onMouseEnter={() => toggleOpen()}
           onMouseLeave={() => toggleOpen()}
           onClick={handleClick}
         >
-          <motion.div className="flex-grow align-middle gap-4 flex justify-start">
-            {Icon && <Icon className=" w-6 sm:hidden" />}
+          <motion.div className="flex-grow align-middle flex justify-start">
+            {Icon && <Icon className="mr-4 dark:text-slate-200 w-6 sm:hidden" />}
             <Heading3
               className="flex flex-col justify-center"
               text={menuLink.label}
@@ -98,26 +98,26 @@ export function MenuItem({
               </motion.button>
             )}
           </motion.div>
-        </motion.div>
-      </Link>
-      {menuLink.links && (
-        <motion.ul
-          animate={open ? "open" : "closed"}
-          className={`${open ? "block" : "hidden"} 
+          {menuLink.links && (
+            <motion.ul
+              animate={open ? "open" : "closed"}
+              className={`${open ? "block" : "hidden"} 
                         relative sm:absolute 
+                        left-0 top-full
                         rounded-sm
                         shadow-sm 
-                        bg-slate-50
-                        dark:bg-gray-800 
+                        bg-slate-100
+                        dark:bg-slate-800 
                         grid gap-3
-                        my-2 mx-1 w-auto sm:px-4 py-4 `}
-        >
-          {menuLink.links.map((value: MenuLink, index: number) => {
-            return (
-              <motion.li key={index} variants={MenuItemVariants}>
-                {/* <Subtitle1 props={{ text: value.label }} /> */}
-                <div
-                  className="flex-shrink-0 
+                        w-full max-w-auto
+                        px-4 py-4 `}
+            >
+              {menuLink.links.map((value: MenuLink, index: number) => {
+                return (
+                  <motion.li key={index} variants={MenuItemVariants}>
+                    {/* <Subtitle1 props={{ text: value.label }} /> */}
+                    <div
+                      className="flex-shrink-0 
                 w-auto whitespace-pre 
                 relative 
                 font-semibold 
@@ -126,15 +126,17 @@ export function MenuItem({
                 dark:text-gray-400
                 text-xs 
                 leading-5"
-                >
-                  {/* Content */}
-                  {value.label}
-                </div>
-              </motion.li>
-            );
-          })}
-        </motion.ul>
-      )}
+                    >
+                      {/* Content */}
+                      {value.label}
+                    </div>
+                  </motion.li>
+                );
+              })}
+            </motion.ul>
+          )}
+        </motion.div>
+      </Link>
 
       {/* {children} */}
       <div className="sm:hidden  h-px w-full bg-gray-300" />

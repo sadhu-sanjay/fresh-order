@@ -62,7 +62,7 @@ export function MenuItem({
   };
 
   return (
-    <div>
+    <motion.div >
       <Link
         href={menuLink.href}
         //     className={`
@@ -78,6 +78,7 @@ export function MenuItem({
           onMouseLeave={() => toggleOpen()}
         >
           <motion.div
+          whileHover={{ scale: 1.1 }}
             onClick={handleClick}
             className="flex-grow align-middle flex justify-start"
           >
@@ -144,6 +145,6 @@ export function MenuItem({
 
       {/* {children} */}
       <div className="sm:hidden  h-px w-full bg-gray-300" />
-    </div>
+    </motion.div>
   );
 }

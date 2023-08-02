@@ -60,7 +60,7 @@ export const Nav = () => {
           {/* <Heading2 text='FResh' /> */}
         </Link>
 
-        <form>
+        {/* <form>
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -103,9 +103,9 @@ export const Nav = () => {
               Search
             </button>
           </div>
-        </form>
+        </form> */}
 
-        <div className=" items-center sm:flex ">
+        <div className="hidden items-center sm:flex ">
           {headerData.links?.map((item, index) => (
             // <MenuItem key={`item-${item.label}`} {...item} />
 

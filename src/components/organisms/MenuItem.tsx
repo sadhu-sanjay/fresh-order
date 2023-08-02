@@ -14,7 +14,7 @@ const itemVariants: Variants = {
     y: 0,
     transition: { type: "spring", stiffness: 300, damping: 24 },
   },
-  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
+  closed: { opacity: 0, y: "50%", transition: { duration: 0.2 } },
 };
 
 const MenuItemVariants = {
@@ -74,13 +74,16 @@ export function MenuItem({
         <motion.div
           className="flex flex-col hover:bg-gray-100 dark:hover:bg-gray-800
                     p-4 m-2 sm:py-2 sm:m-1 relative  rounded-sm "
-          // whileHover={{ scale: 1.1 }}
           onMouseEnter={() => toggleOpen()}
           onMouseLeave={() => toggleOpen()}
-          onClick={handleClick}
         >
-          <motion.div className="flex-grow align-middle flex justify-start">
-            {Icon && <Icon className="mr-4 dark:text-slate-200 w-6 sm:hidden" />}
+          <motion.div
+            onClick={handleClick}
+            className="flex-grow align-middle flex justify-start"
+          >
+            {Icon && (
+              <Icon className="mr-4 dark:text-slate-200 w-6 sm:hidden" />
+            )}
             <Heading3
               className="flex flex-col justify-center"
               text={menuLink.label}
@@ -100,6 +103,7 @@ export function MenuItem({
           </motion.div>
           {menuLink.links && (
             <motion.ul
+              variants={itemVariants}
               animate={open ? "open" : "closed"}
               className={`${open ? "block" : "hidden"} 
                         relative sm:absolute 

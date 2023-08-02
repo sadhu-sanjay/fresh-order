@@ -105,7 +105,7 @@ export const Nav = () => {
           </div>
         </form>
 
-        <div className="hidden items-center sm:flex ">
+        <div className=" items-center sm:flex ">
           {headerData.links?.map((item, index) => (
             // <MenuItem key={`item-${item.label}`} {...item} />
 

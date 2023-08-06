@@ -19,6 +19,7 @@
     "eslint-config-next": "13.4.9",
     "framer-motion": "^10.12.18",
     "konva": "^9.2.0",
+    "mongodb": "^5.7.0",
     "next": "^13.4.12",
     "next-themes": "^0.2.1",
     "postcss": "8.4.25",

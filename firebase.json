@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "out",
+    "target": "fresh-order-tees",
     "ignore": [
       "firebase.json",
       "**/.*",

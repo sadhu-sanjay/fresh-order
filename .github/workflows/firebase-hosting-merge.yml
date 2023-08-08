@@ -16,5 +16,5 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV1_5B71C }}'
-          channelId: live
+          channelId: fresh-order-tees
           projectId: dev1-5b71c
